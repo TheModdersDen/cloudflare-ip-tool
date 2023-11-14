@@ -1,0 +1,10 @@
+ports.txt
+.venv/
+venv/
+*.pyc
+*.pyo
+
+*.env
+.env
+.env.*
+!.env.example
