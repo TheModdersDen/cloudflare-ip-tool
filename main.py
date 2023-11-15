@@ -63,7 +63,7 @@ def get_allowed_ports() -> dict:
         # Generate a dictionary of allowed ports based on the input of the 'ports.txt' file
         # It should be formatted like this: 80:TCP
         allowed_ports = {}
-        with open(ports_file, 'r') as in_file:
+        with open(os.getcwd() + path.sep + ports_file, 'r') as in_file:
             for line in in_file:
                 # Split the line into a list
                 line = line.split(':')
@@ -170,7 +170,7 @@ def elevate_script() -> bool:
             print("The script is not running on a Linux system. Please run the script on a Linux system.")
             sleep(1)
             print("Exiting the script...")
-            exit(1)
+            sys.exit(1)
         elif (os.geteuid() == 0):
             return True
         elif (os.geteuid() != 0):
@@ -244,4 +244,4 @@ print(f"Date of next scheduled update: {(last_update + datetime.timedelta(days=3
 # Print a final message to the user
 print("Cloudflare Firewall IP Updater has finished running")
 sleep(3)
-exit(0)
+sys.exit(0)
